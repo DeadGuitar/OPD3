@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>ComIn Calculator</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+</head>
+
+<body class="page">
+    <div class="container">
+        <header>
+            <H1>ComIn Income Calculator</H1>
+        </header>
+        <form action="/" method="post">
+            <label for="deposit">Сумма вклада:</label>
+            <br>
+            <input type="number" name="deposit" id="deposit" value="{{depv}}" min="0" required="required"
+                step="0.01">
+            <br>
+            <br>
+            <label for="interest">Процентная ставка:</label>
+            <br>
+            <input class="slider" type="range" name="interest" id="interest" min="0" max="30"
+                   step="0.1" value="{{intv}}" oninput="interestValue.innerText = this.value">
+            <div class="table">
+                <H2 id="interestValue">{{intv}}</H2>
+                <H2>%</H2>
+            </div>
+            <br>
+            <label for="time_slider">Срок:</label>
+            <br>
+            <input type="range" name="time" class="slider" value="{{timev}}"
+                   id="time_slider" min="0" max="60"
+                   oninput="timeValue.innerText = this.value" >
+            <div class="table2">
+                <H2 id="timeValue">{{timev}}</H2>
+                <h2>месяцев</h2>
+            </div>
+            <br>
+            <input type="submit" id="submit">
+        </form>
+        <br><p>Сумма на счету по истечении срока:</p>
+        <H1>{{Ans}}</H1>
+    </div>
+<footer>
+    <p>This is the educational example of working with Flask micro-framework</p>
+    <p>Punchenko D.P. OmSTU, 2024</p>
+</footer>
+</body>
+</html>
